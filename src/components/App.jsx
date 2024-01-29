@@ -27,20 +27,20 @@ export const App = () => {
     });
   };
 
-  const filter = contacts.filter(contact => {
+  const filterContacts = contacts.filter(contact => {
     return contact.name.toLowerCase().includes(nameFilter.toLowerCase());
   });
 
   useEffect(() => {
-    window.localStorage.setItem('saveContact', JSON.stringify(filter));
-  }, [filter]);
+    window.localStorage.setItem('saveContact', JSON.stringify(contacts));
+  }, [contacts]);
 
   return (
     <div>
       <h1>Phonebook</h1>
       <ContactForm onAdd={addContacts} />
       <SearchBox value={nameFilter} onChange={setNameFilter} />
-      <ContactList items={filter} onDelete={deleteContacts} />
+      <ContactList items={filterContacts} onDelete={deleteContacts} />
     </div>
   );
 };
